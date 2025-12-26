@@ -19,9 +19,23 @@
       # List packages installed in system profile. To search by name, run:
       # $ nix-env -qaP | grep wget
       environment.systemPackages = with pkgs; [ 
+        # Existing
         neofetch 
         vim 
-        opencode 
+        opencode
+
+        # CLI tools (migrated from Homebrew)
+        btop
+        coreutils
+        direnv
+        gh
+        go
+        lazydocker
+        neovim
+        netbird
+        nodejs
+        podman
+        rustup
       ];
 
       # Necessary for using flakes on this system.
@@ -30,6 +44,9 @@
       users.users.${username} = {
         home = "/Users/${username}";
       };
+
+      # Required for homebrew and other user-specific features
+      system.primaryUser = username;
 
       # Enable alternative shell support in nix-darwin.
       programs.zsh.enable = true;
@@ -245,6 +262,7 @@
 
       modules = [ 
         configuration 
+        ./homebrew.nix
         home-manager.darwinModules.home-manager {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
