@@ -51,6 +51,22 @@
       # Enable alternative shell support in nix-darwin.
       programs.zsh.enable = true;
 
+      # NetBird VPN daemon service
+      launchd.daemons.netbird = {
+        serviceConfig = {
+          Label = "io.netbird.client";
+          ProgramArguments = [
+            "/bin/sh"
+            "-c"
+            "/bin/wait4path /nix/store && /bin/mkdir -p /var/run/netbird && exec /run/current-system/sw/bin/netbird service run"
+          ];
+          RunAtLoad = true;
+          KeepAlive = true;
+          StandardOutPath = "/var/log/netbird/client.log";
+          StandardErrorPath = "/var/log/netbird/client.error.log";
+        };
+      };
+
       # Set Git commit hash for darwin-version.
       system.configurationRevision = self.rev or self.dirtyRev or null;
 
