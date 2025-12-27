@@ -1,4 +1,10 @@
-{ pkgs, lib, username, self, ... }:
+{
+  pkgs,
+  lib,
+  username,
+  self,
+  ...
+}:
 
 let
   humanlayer = pkgs.callPackage ../../pkgs/humanlayer.nix { };
@@ -6,10 +12,10 @@ in
 {
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
-  environment.systemPackages = with pkgs; [ 
+  environment.systemPackages = with pkgs; [
     # Existing
-    neofetch 
-    vim 
+    neofetch
+    vim
     opencode
     humanlayer
 
@@ -27,10 +33,10 @@ in
     rustup
 
     # Development tools for Nix
-    statix        # Nix linter
-    nixpkgs-fmt   # Nix formatter
-    deadnix       # Find unused Nix code
-    nix-tree      # Browse Nix dependencies
+    statix # Nix linter
+    nixpkgs-fmt # Nix formatter
+    deadnix # Find unused Nix code
+    nix-tree # Browse Nix dependencies
   ];
 
   # Necessary for using flakes on this system.

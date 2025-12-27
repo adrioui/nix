@@ -1,4 +1,10 @@
-{ lib, buildNpmPackage, fetchFromGitHub, nodejs, makeWrapper }:
+{
+  lib,
+  buildNpmPackage,
+  fetchFromGitHub,
+  nodejs,
+  makeWrapper,
+}:
 
 buildNpmPackage rec {
   pname = "humanlayer";
@@ -19,7 +25,7 @@ buildNpmPackage rec {
 
   # Skip the prepack script that tries to copy .claude files
   npmPackFlags = [ "--ignore-scripts" ];
-  
+
   # Just run the build
   buildPhase = ''
     runHook preBuild
@@ -30,18 +36,18 @@ buildNpmPackage rec {
   # Install manually since the default npm install has issues
   installPhase = ''
     runHook preInstall
-    
+
     mkdir -p $out/lib/humanlayer
     cp -r dist $out/lib/humanlayer/
     cp package.json $out/lib/humanlayer/
-    
+
     # Copy node_modules for runtime dependencies
     cp -r node_modules $out/lib/humanlayer/
-    
+
     mkdir -p $out/bin
     makeWrapper ${nodejs}/bin/node $out/bin/humanlayer \
       --add-flags "$out/lib/humanlayer/dist/index.js"
-    
+
     runHook postInstall
   '';
 
