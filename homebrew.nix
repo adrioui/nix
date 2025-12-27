@@ -29,6 +29,4 @@
   # Not using brews - all CLI tools managed via Nix
   # homebrew.brews = [ ];
 
-  # No additional taps needed for current casks
-  # homebrew.taps = [ ];
 }

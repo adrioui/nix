@@ -1,5 +1,8 @@
 { pkgs, lib, username, self, ... }:
 
+let
+  humanlayer = pkgs.callPackage ../../pkgs/humanlayer.nix { };
+in
 {
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
@@ -8,6 +11,7 @@
     neofetch 
     vim 
     opencode
+    humanlayer
 
     # CLI tools (migrated from Homebrew)
     btop
