@@ -25,12 +25,15 @@ in
     direnv
     gh
     go
+    bun
     lazydocker
     neovim
     netbird
     nodejs
     podman
+    rclone
     rustup
+    sshpass
 
     # Development tools for Nix
     statix # Nix linter
@@ -41,6 +44,9 @@ in
 
   # Necessary for using flakes on this system.
   nix.settings.experimental-features = "nix-command flakes";
+
+  # Allow user to manage binary caches (needed for devenv cachix)
+  nix.settings.trusted-users = [ "root" username ];
 
   users.users.${username} = {
     home = "/Users/${username}";
