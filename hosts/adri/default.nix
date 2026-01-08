@@ -34,6 +34,7 @@ in
     rclone
     rustup
     sshpass
+    freetds
 
     # Development tools for Nix
     statix # Nix linter
