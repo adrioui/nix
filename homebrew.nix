@@ -29,6 +29,7 @@
     "warp"
     "zed"
     "yoink"
+    "anydesk"
   ];
 
   # Not using brews - all CLI tools managed via Nix

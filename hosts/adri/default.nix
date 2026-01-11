@@ -35,6 +35,12 @@ in
     rustup
     sshpass
     freetds
+    ripgrep
+    uv
+    mkdocs
+    pnpm
+    rojo
+    graphviz
 
     # Development tools for Nix
     statix # Nix linter
