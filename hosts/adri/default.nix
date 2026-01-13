@@ -41,6 +41,8 @@ in
     pnpm
     rojo
     graphviz
+    lazygit
+    emscripten
 
     # Development tools for Nix
     statix # Nix linter

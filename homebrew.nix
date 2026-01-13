@@ -30,9 +30,12 @@
     "zed"
     "yoink"
     "anydesk"
+    "robloxstudio"
+    "typora"
   ];
 
-  # Not using brews - all CLI tools managed via Nix
-  # homebrew.brews = [ ];
+  homebrew.brews = [
+    "wally"
+  ];
 
 }
