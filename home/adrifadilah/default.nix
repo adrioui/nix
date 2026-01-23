@@ -19,6 +19,11 @@
   # Enable XDG Base Directory support
   xdg.enable = true;
 
+  # AI tools
+  home.packages = [
+    pkgs.llm-agents.agent-browser
+  ];
+
   # Shell configuration with convenient aliases
   programs.zsh = {
     enable = true;
